@@ -9,9 +9,12 @@ class BowlingGame:
         pass
     
     def add_frame(self, frame: Frame) -> None:
+        if len(self.__frame) == 10:
+            raise BowlingError
         self.__frame.append(frame)
 
     def get_frame_at(self, i: int) -> Frame:
+
         if i >= len(self.__frame):
             raise BowlingError
         
