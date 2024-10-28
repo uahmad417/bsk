@@ -21,7 +21,12 @@ class BowlingGame:
         return self.__frame[i]
 
     def calculate_score(self) -> int:
-        pass
+        
+        score = 0
+        for frame in self.__frame:
+            score = score + frame.score()
+        
+        return score
 
     def set_first_bonus_throw(self, bonus_throw: int) -> None:
         pass
