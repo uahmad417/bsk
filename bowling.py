@@ -24,14 +24,22 @@ class BowlingGame:
         
         score = 0
         is_spare = False
+        is_strike = False
         for frame in self.__frame:
-            
+
+            if is_strike:
+                score = score + frame.get_first_throw() + frame.get_second_throw()
+                is_strike = False
+
             if is_spare:
                 score = score + frame.get_first_throw()
                 is_spare = False
 
             if frame.is_spare():
                 is_spare = True
+
+            if frame.is_strike():
+                is_strike = True
 
             score = score + frame.score()
         
