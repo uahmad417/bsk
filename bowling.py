@@ -32,7 +32,9 @@ class BowlingGame:
                     frame.set_bonus(self.__frames[index+1].get_first_throw())
 
             if frame.is_strike():
-                if self.__frames[index+1].is_strike():
+                if index == len(self.__frames)-1:
+                    frame.set_bonus(self.__bonus_throw + self.__second_bonus_throw)
+                elif self.__frames[index+1].is_strike():
                     frame.set_bonus(self.__frames[index+1].get_first_throw() + self.__frames[index+2].get_first_throw())
                 else:
                     frame.set_bonus(self.__frames[index+1].get_first_throw() + self.__frames[index+1].get_second_throw())
@@ -45,4 +47,4 @@ class BowlingGame:
         self.__bonus_throw = bonus_throw
 
     def set_second_bonus_throw(self, bonus_throw: int) -> None:
-        pass
+        self.__second_bonus_throw = bonus_throw
